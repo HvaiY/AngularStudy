@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng Filters</title>
+  
+</head>
+<body>
+    <!-- currency	格式化数字为货币格式。
+    filter	从数组项中选择一个子集。
+    lowercase	格式化字符串为小写。
+    orderBy	根据某个表达式排列数组。
+    uppercase	格式化字符串为大写。 -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+     <p>姓名为：{{lastName|uppercase}}</p>
+      <input type="number" ng-model="quantity"> <br>
+      <input type="number" ng-model="price"> <br>
+      <p>总金额为：{{quantity*price|currency}}</p>
+
+      <br>
+      <ul>
+        <li ng-repeat="x in names | orderBy:'country'">
+          {{ x.name + ', ' + x.country }}
+        </li>
+      </ul>
+    <br>
+    <br>
+    <input type="text" ng-model="test"/>
+    <ul>
+      <li ng-repeat="x in names |filter:test| orderBy:'country'">
+        {{ x.name + ', ' + x.country }}
+      </li>
+    </ul>
+    <br>
+
+    <ul>
+        <li ng-repeat="x in names | orderBy:'country'">
+          {{ (x.name|reverse) + ', ' + x.country }}
+        </li>
+      </ul>
+    </div>
+</body> 
+<script src="../lib/angular/angular.min.js"></script>
+<script> 
+   angular.module("myApp",[]).controller("myCtrl",function($scope){
+     $scope.lastName="admin";
+     $scope.names=[{name:'qq',country:'china'},{name:'tim',country:'usa'},{name:'ben',country:'china'},{name:'cat',country:'japan'}]
+   })
+
+   //自定义过滤
+   .filter('reverse', function() { //可以注入依赖
+    return function(text) {
+        return text.split("").reverse().join("");
+    }
+});
+</script>
+</html>

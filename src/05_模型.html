@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng mudule</title>
+    <style>
+        /* input 的required 可以控制 通过验证控制css */
+        input.ng-invalid {
+            background-color: lightblue;
+        }
+        </style>
+</head>
+<body>
+   <form ng-app="" name="myForm" ng-init="myText='123@qq.com'">
+       Email:
+       <input type="email" name="myAddress" ng-model="myText" required>
+       <span ng-show="myForm.myAddress.$error.email">这个邮箱不合法</span>
+       <h1>状态</h1>
+      必填： {{myForm.myAddress.$valid}} <br>
+      是否改变： {{myForm.myAddress.$dirty}} <br>
+      是否触摸： {{myForm.myAddress.$touched}} <br> 
+       {{myForm.myAddress.$not-empty}}  <br>
+       {{myForm.myAddress.$untouched}} <br>
+       {{myForm.myAddress.$valid}} <br>
+       {{myForm.myAddress.$invalid}} <br>
+       {{myForm.myAddress.$dirty}} <br>
+      等待 {{myForm.myAddress.$pending}} <br>
+      原始 {{myForm.myAddress.$pristine}} <br>
+   </form>
+</body> 
+<script src="../lib/angular/angular.min.js"></script>
+</html>

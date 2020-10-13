@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng expression</title>
+
+</head>
+<body>
+     <div ng-app="" ng-init="lastName='dahai'; firstName='yuan';person={name:'ben',age:'18',address:'shanghai'};points=[1,56,98,21,3]">
+     姓名：{{firstName+"   "+ lastName}} <span ng-bind="lastName+' '+firstName"></span> <br>
+     <span ng-bind="'姓名：'+person.name+'，年龄：'+person.age+'，地址:'+person.address "></span> <br>
+     <span ng-bind="points[3]"></span>
+     </div>
+</body> 
+<script src="../lib/angular/angular.min.js"></script>
+</html>

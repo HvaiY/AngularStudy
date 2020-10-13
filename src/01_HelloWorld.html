@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng helloworld</title>
+
+</head>
+<body>
+      <div ng-app="">
+        <p>名称：<input type="text" ng-model="name" ng-init="name='大海'"></p>
+        <!-- ng-model="name" 定义name 变量名称, ng-init="name='大海'" 初始化变量 name -->
+        <h1>hello World {{name}}</h1>
+        <p ng-bind="name"></p>  <!-- 数据双向绑定 name 变量名称-->
+        <h2>12+65={{12+65}}</h2>
+       </div>
+<!--  HTML5 允许扩展的（自制的）属性，以 data- 开头      
+       <div data-ng-app="" data-ng-init="firstName='yuan'">
+           <p>姓氏<span data-ng-bind="firstName"></span></p>
+
+       </div> -->
+</body>
+<script src="../lib/angular/angular.min.js"></script>
+</html>

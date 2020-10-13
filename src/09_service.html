@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng Filters</title>
+  
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+      当前请求地址：{{currentUrl}}  <br>
+      请求响应：{{welcome}} <br>
+      {{myHeader}}  <br>
+      {{hex}}
+      
+    </div>
+</body> 
+<script src="../lib/angular/angular.min.js"></script>
+<script> 
+  // 服务 location  timeout interval http
+  var app=angular.module("myApp",[]);
+  //自定义服务
+  app.service('hexafy', function() {
+    this.myFunc = function (x) {
+        return x.toString(16);
+    }
+});
+  app.controller("myCtrl",function($scope,$location,$timeout,$interval,$http,hexafy){
+    $scope.currentUrl=$location.absUrl();
+    $scope.hex=hexafy.myFunc(255);
+    $http.get("welcome.htm").then(function (response){
+      $scope.welcom=response.data;
+    });
+    $scope.myHeader="Hello World";
+    $timeout(function(){
+      $scope.myHeader=new Date().toLocaleTimeString();
+    },2000)
+     $interval(function(){
+      $scope.myHeader=new Date().toLocaleTimeString();
+     },500)
+     $interval(function(){
+      $scope.myHeader="Hello World";
+     },3000)
+
+    console.log($scope);
+    console.log("-----------------");
+    console.log($location);
+  });
+  
+</script>
+</html>

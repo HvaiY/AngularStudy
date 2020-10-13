@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng Instruction</title>
+
+</head>
+<body>
+     <div ng-app="myApp" >
+         <span custominstruction-directive>A 属性</span>
+         <span class="custominstruction-directive">C 类</span>
+     <custominstruction-directive></custominstruction-directive>
+     </div> 
+</body> 
+<script src="../lib/angular/angular.min.js"></script>
+<script>
+  var app=angular.module("myApp",[]);
+  app.directive("custominstructionDirective",function(){
+//     restrict 值可以是以下几种:
+// E 作为元素名使用
+// A 作为属性使用
+// C 作为类名使用
+// M 作为注释使用
+// restrict 默认值为 EA, 即可以通过元素名和属性名来调用指令。
+
+   return {
+     restrict:"C",
+    replace:true ,  //false 表示元素不可见
+    template:"<h1>这是自定义指定</h1>" 
+   };
+  });
+ 
+</script>
+</html>

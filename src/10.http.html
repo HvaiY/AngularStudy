@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng Filters</title>
+  
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+      <ul>
+          <li ng-repeat="x in sites">{{x.Name+"  "+x.Address+"  "+x.Country}}</li>
+      </ul>
+    </div>
+</body> 
+<script src="../lib/angular/angular.min.js"></script>
+<script> 
+ angular.module("myApp",[]).controller("myCtrl",function($scope,$http,$interval){
+  $http({
+     method:'GET',
+     url:'http://rap2api.taobao.org/app/mock/268228/api/v1/sites'    
+  }).then(function success(response){
+      console.log(response.data)
+      $scope.sites=response.data.Sites;
+  },function error(response){
+      console.log(response)
+  });
+
+ $interval(function (){
+
+    $http.get('http://rap2api.taobao.org/app/mock/268228/api/v1/sites').then(function (response){
+    $scope.sites=response.data.Sites;
+  });
+ },1000)
+ });
+ /// 请求方法简写
+//  $http.get
+// $http.head
+// $http.post
+// $http.put
+// $http.delete
+// $http.jsonp
+// $http.patch
+</script>
+</html>
