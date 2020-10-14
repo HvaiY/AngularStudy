@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng select</title>
+  
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+     <select ng-init="selectName=names[0]" ng-model="selectName" ng-options="x for x in names"></select>
+    <select ng-model="selectedSite" ng-options="x.site for x in sites"></select>
+    <h1>你选择的是: {{selectedSite.site}}</h1>
+    <p>网址为: {{selectedSite.url}}</p>
+
+    <select    ng-model="selectedCar" ng-options="x for (x,y) in cars"></select>
+    <h1>你选择的是: {{selectedCar.brand}}</h1>
+    <h2>模型: {{selectedCar.model}}</h2>
+    <h3>颜色: {{selectedCar.color}}</h3>
+    </div>
+</body> 
+<script src="../lib/angular/angular.min.js"></script>
+<script>
+ var app=angular.module("myApp",[]);
+ app.controller("myCtrl",function($scope){
+  $scope.names=["taobao","google","Jd"];
+  $scope.sites = [
+    {site : "Google", url : "http://www.google.com"},
+    {site : "Runoob", url : "http://www.runoob.com"},
+    {site : "Taobao", url : "http://www.taobao.com"}
+];
+$scope.cars = {
+        car01 : {brand : "Ford", model : "Mustang", color : "red"},
+        car02 : {brand : "Fiat", model : "500", color : "white"},
+        car03 : {brand : "Volvo", model : "XC90", color : "black"}
+    }
+ });
+
+
+
+</script>
+</html>

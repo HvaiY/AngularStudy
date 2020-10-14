@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng dom</title>
+
+</head>
+<body>
+  <div ng-app="">
+   <form novalidate >
+    <input type="radio" ng-model="myVar" value="dogs">Dogs
+    <input type="radio" ng-model="myVar" value="tuts">Tutorials
+    <input type="radio" ng-model="myVar" value="cars">Cars
+
+    <select ng-model="mySelect">
+      <option value="">
+      <option value="dogs">Dogs
+      <option value="tuts">Tutorials
+      <option value="cars">Cars
+    </select>
+   </form>
+
+   <div ng-switch="mySelect">
+    <div ng-switch-when="dogs">
+       <h1>Dogs</h1>
+       <p>Welcome to a world of dogs.</p>
+    </div>
+    <div ng-switch-when="tuts">
+       <h1>Tutorials</h1>
+       <p>Learn from examples.</p>
+    </div>
+    <div ng-switch-when="cars">
+       <h1>Cars</h1>
+       <p>Read about cars.</p>
+    </div>
+  </div>
+    </div>
+</body> 
+<script src="../lib/angular/angular.min.js"></script>
+<script>
+//   angular.lowercase (<angular1.7）
+// angular.$$lowercase()（angular1.7+）	转换字符串为小写
+// angular.uppercase() (<angular1.7）
+// angular.$$uppercase()（angular1.7+）	转换字符串为大写
+// angular.isString()	判断给定的对象是否为字符串，如果是返回 true。
+// angular.isNumber()	判断给定的对象是否为数字，如果是返回 true。
+  </script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng table</title>
+    <style>
+        table, th , td {
+          border: 1px solid grey;
+          border-collapse: collapse;
+          padding: 5px;
+        }
+        table tr:nth-child(odd) {
+          background-color: #ff0000;
+        }
+        table tr:nth-child(even) {
+          background-color: #ffff00;
+        }
+        </style>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <table>
+            <tr ng-repeat="x in names |  orderBy : 'Country'">
+            <td >{{ $index+1 }}</td>
+            <td ng-if="$odd" >{{ x.Name }}</td>
+            <td ng-if="$even">{{ x.Name }}</td>
+            <td ng-if="$odd" >{{ x.Country }}</td>
+            <td ng-if="$even">{{ x.Country }}</td>
+            </tr>
+            </table>
+    </div>
+</body> 
+<script src="../lib/angular/angular.min.js"></script>
+<script>
+ var app=angular.module("myApp",[]);
+ app.controller("myCtrl",function($scope,$http){
+    $http.get("http://rap2api.taobao.org/app/mock/268228/api/v1/sites").then(function(response){
+     $scope.names=response.data.Sites;
+    });
+ });
+
+
+
+</script>
+</html>
